@@ -1,0 +1,94 @@
+@import 'tailwindcss';
+
+/* DLF homepage-style (reference): Playfair serif section titles + Inter for UI/body; #000 / #fff CTAs, grey copy */
+@theme {
+  --color-navy: #000000;
+  --color-navy-deep: #111111;
+  --color-wine: #333333;
+  --color-forest: #1a1a1a;
+  --color-gold: #999999;
+  --color-gold-muted: #bbbbbb;
+  --color-gold-dark: #555555;
+  --color-ink: #000000;
+  --color-muted: #555555;
+  --color-surface: #fafafa;
+  --color-border: #e0e0e0;
+  --font-display: 'Playfair Display', Georgia, ui-serif, 'Times New Roman', serif;
+  --font-sans:
+    'Inter', 'Helvetica Neue', Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* DLF-style: serif/display titles & sans labels as spaced caps */
+@layer components {
+  .heading-dlf {
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  color: var(--color-muted);
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.dark {
+  background: var(--color-navy-deep);
+  color: #d4d4d4;
+}
+
+@keyframes announcement-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.announcement-marquee-track {
+  animation: announcement-marquee 45s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .announcement-marquee-track {
+    animation: none;
+  }
+
+  .announcement-marquee-wrap {
+    overflow: visible;
+  }
+
+  .announcement-marquee-wrap .announcement-marquee-track {
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100% !important;
+    max-width: 100%;
+  }
+
+  .announcement-marquee-wrap .announcement-marquee-track span:last-child {
+    display: none;
+  }
+}
+
+/* Portfolio project page: admin-picked section text color overrides Tailwind utilities */
+.site-project-section-themed {
+  --site-project-fg: currentColor;
+}
+.site-project-section-themed
+  :where(h1, h2, h3, h4, p, li, td, th, label, figcaption, .heading-dlf):not([data-theme-preserve]) {
+  color: var(--site-project-fg, inherit) !important;
+}
+.site-project-section-themed input:not([data-theme-preserve]),
+.site-project-section-themed textarea:not([data-theme-preserve]) {
+  color: var(--site-project-fg, inherit) !important;
+}
+
