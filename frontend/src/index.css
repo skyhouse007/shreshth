@@ -1,5 +1,8 @@
 @import 'tailwindcss';
 
+/* Light-only: disable Tailwind default dark mode (prefers-color-scheme). */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* DLF homepage-style (reference): Playfair serif section titles + Inter for UI/body; #000 / #fff CTAs, grey copy */
 @theme {
   --color-navy: #000000;
@@ -38,11 +41,6 @@ body {
   color: var(--color-muted);
   background: #ffffff;
   -webkit-font-smoothing: antialiased;
-}
-
-body.dark {
-  background: var(--color-navy-deep);
-  color: #d4d4d4;
 }
 
 @keyframes announcement-marquee {

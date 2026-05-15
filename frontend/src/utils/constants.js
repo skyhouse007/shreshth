@@ -1,6 +1,5 @@
 export const STORAGE_TOKEN = 'shresth_token';
 export const STORAGE_USER = 'shresth_user';
-export const STORAGE_THEME = 'shresth_theme';
 export const STORAGE_COMPARE = 'shresth_compare';
 export const STORAGE_FAVORITES = 'shresth_favorites';
 export const STORAGE_DASHBOARD_SEEN = 'shresth_dashboard_seen_at';

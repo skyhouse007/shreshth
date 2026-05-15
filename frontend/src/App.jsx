@@ -3,7 +3,6 @@ import { Toaster } from 'react-hot-toast';
 import PublicLayout from './components/PublicLayout.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 import AdminLayout from './components/AdminLayout.jsx';
-import { ThemeProvider } from './context/ThemeContext.jsx';
 import { AuthProvider } from './context/AuthContext.jsx';
 import { CompareProvider } from './context/CompareContext.jsx';
 import { FavoritesProvider } from './context/FavoritesContext.jsx';
@@ -42,11 +41,10 @@ function LegacyAdminProjectEditRedirect() {
 export default function App() {
   return (
     <BrowserRouter>
-      <ThemeProvider>
-        <AuthProvider>
-          <CompareProvider>
-            <FavoritesProvider>
-              <Routes>
+      <AuthProvider>
+        <CompareProvider>
+          <FavoritesProvider>
+            <Routes>
                 <Route element={<PublicLayout />}>
                   <Route path="/" element={<Home />} />
                   <Route path="/about" element={<About />} />
@@ -88,12 +86,11 @@ export default function App() {
                   <Route path="settings" element={<AdminSettings />} />
                 </Route>
                 <Route path="*" element={<Navigate to="/" replace />} />
-              </Routes>
-              <Toaster position="top-center" toastOptions={{ className: 'dark:bg-neutral-800 dark:text-white' }} />
-            </FavoritesProvider>
-          </CompareProvider>
-        </AuthProvider>
-      </ThemeProvider>
+            </Routes>
+            <Toaster position="top-center" />
+          </FavoritesProvider>
+        </CompareProvider>
+      </AuthProvider>
     </BrowserRouter>
   );
 }
