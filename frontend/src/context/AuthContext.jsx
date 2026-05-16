@@ -1,11 +1,12 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { api } from '../api/client.js';
-import { STORAGE_TOKEN, STORAGE_USER } from '../utils/constants.js';
+import { ADMIN_AUTH_DISABLED, STORAGE_TOKEN, STORAGE_USER } from '../utils/constants.js';
 
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(() => {
+    if (ADMIN_AUTH_DISABLED) return null;
     try {
       const raw = localStorage.getItem(STORAGE_USER);
       return raw ? JSON.parse(raw) : null;
@@ -13,8 +14,10 @@ export function AuthProvider({ children }) {
       return null;
     }
   });
-  const [token, setToken] = useState(() => localStorage.getItem(STORAGE_TOKEN));
-  const [bootstrapping, setBootstrapping] = useState(Boolean(localStorage.getItem(STORAGE_TOKEN)));
+  const [token, setToken] = useState(() => (ADMIN_AUTH_DISABLED ? null : localStorage.getItem(STORAGE_TOKEN)));
+  const [bootstrapping, setBootstrapping] = useState(() =>
+    ADMIN_AUTH_DISABLED ? true : Boolean(localStorage.getItem(STORAGE_TOKEN))
+  );
 
   const persist = useCallback((nextToken, nextUser) => {
     if (nextToken) localStorage.setItem(STORAGE_TOKEN, nextToken);
@@ -38,12 +41,38 @@ export function AuthProvider({ children }) {
   }, [persist]);
 
   useEffect(() => {
+    if (!ADMIN_AUTH_DISABLED) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        const { data } = await api.get('/admin/me');
+        if (!cancelled) {
+          setUser({ _id: data._id, name: data.name, email: data.email, phone: data.phone });
+          localStorage.setItem(STORAGE_USER, JSON.stringify(data));
+        }
+      } catch {
+        if (!cancelled) {
+          setUser(null);
+          localStorage.removeItem(STORAGE_USER);
+        }
+      } finally {
+        if (!cancelled) setBootstrapping(false);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (ADMIN_AUTH_DISABLED) return;
     if (!token) {
       setBootstrapping(false);
       return;
     }
     let cancelled = false;
     (async () => {
+      if (!cancelled) setBootstrapping(true);
       try {
         const { data } = await api.get('/admin/me');
         if (!cancelled) {
@@ -65,7 +94,7 @@ export function AuthProvider({ children }) {
     () => ({
       user,
       token,
-      isAuthenticated: Boolean(token && user),
+      isAuthenticated: ADMIN_AUTH_DISABLED ? Boolean(user) : Boolean(token && user),
       bootstrapping,
       login,
       logout,

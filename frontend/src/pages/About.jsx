@@ -1,11 +1,10 @@
 import { motion } from 'framer-motion';
-import { UserCircle } from 'lucide-react';
 import SEO from '../components/SEO.jsx';
 
-const team = [
-  { name: 'Vikram Shresth', role: 'Founding Principal', bio: 'Two decades shaping residential and hospitality-led corridors from Bodh Gaya to metros with family offices and global funds.' },
-  { name: 'Ananya Menon', role: 'Head of Advisory', bio: 'Architect-turned-broker; champions light, volume, and honest comparables.' },
-  { name: 'Kabir Dalal', role: 'Legal & Compliance', bio: 'Former AM law firm associate focused on title clarity for large land assemblies.' },
+const directors = [
+  { name: 'Dr. Mrigendra Kumar', role: 'Director', image: '/team/kumar-santosh.png' },
+  { name: 'Kumar Santosh', role: 'Director', image: '/team/mrigendra-kumar.png' },
+  { name: 'Ranjan Kumar', role: 'Director-HR', image: '/team/ranjan-kumar.png' },
 ];
 
 export default function About() {
@@ -55,23 +54,27 @@ export default function About() {
         </div>
 
         <section className="mt-20">
-          <h2 className="heading-dlf font-display text-3xl font-semibold text-neutral-900 dark:text-white">Leadership</h2>
-          <div className="mt-10 grid gap-8 md:grid-cols-3">
-            {team.map((member, i) => (
+          <h2 className="heading-dlf font-display text-3xl font-semibold text-neutral-900 dark:text-white">Directors</h2>
+          <p className="mt-2 max-w-2xl text-neutral-600 dark:text-neutral-400">
+            Stewardship and governance for Shresth Properties&apos; developments and advisory mandate.
+          </p>
+          <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {directors.map((member, i) => (
               <motion.article
                 key={member.name}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.06 }}
-                className="rounded-2xl border border-neutral-200 bg-white p-6 dark:border-neutral-800 dark:bg-neutral-900"
+                transition={{ delay: i * 0.08 }}
+                className="flex flex-col items-center overflow-hidden rounded-2xl border border-neutral-200 bg-white px-5 pb-5 pt-6 text-center dark:border-neutral-800 dark:bg-neutral-900 sm:px-8 sm:pb-6 sm:pt-8"
               >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-gold/15 text-gold">
-                  <UserCircle className="h-5 w-5" />
+                <div className="mx-auto aspect-[3/4] w-full max-w-[11rem] overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-800 sm:max-w-[12rem]">
+                  <img src={member.image} alt={member.name} className="h-full w-full object-cover object-top" />
                 </div>
-                <h3 className="heading-dlf font-display text-xl font-semibold text-neutral-900 dark:text-white">{member.name}</h3>
-                <p className="text-sm font-medium text-gold">{member.role}</p>
-                <p className="mt-3 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">{member.bio}</p>
+                <div className="mt-4 w-full border-t border-neutral-200 pt-4 dark:border-neutral-800">
+                  <h3 className="heading-dlf font-display text-lg font-semibold text-neutral-900 dark:text-white sm:text-xl">{member.name}</h3>
+                  <p className="mt-1 text-sm font-medium text-gold">{member.role}</p>
+                </div>
               </motion.article>
             ))}
           </div>

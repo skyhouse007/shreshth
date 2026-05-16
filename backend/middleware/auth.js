@@ -9,6 +9,19 @@ export const generateToken = (id) => {
 
 export const protect = async (req, res, next) => {
   try {
+    if (process.env.ADMIN_AUTH_DISABLED === 'true') {
+      const admin = await Admin.findOne().select('-password');
+      if (!admin) {
+        const err = new Error(
+          'Admin login is disabled but no admin exists in the database — run the seed script or turn off ADMIN_AUTH_DISABLED.'
+        );
+        err.statusCode = 503;
+        return next(err);
+      }
+      req.admin = admin;
+      return next();
+    }
+
     let token;
     const header = req.headers.authorization;
     if (header?.startsWith('Bearer ')) {

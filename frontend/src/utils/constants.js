@@ -1,3 +1,6 @@
+/** When true (via VITE_ADMIN_AUTH_DISABLED=true), the admin UI skips login; set ADMIN_AUTH_DISABLED=true on the API too. */
+export const ADMIN_AUTH_DISABLED = import.meta.env.VITE_ADMIN_AUTH_DISABLED === 'true';
+
 export const STORAGE_TOKEN = 'shresth_token';
 export const STORAGE_USER = 'shresth_user';
 export const STORAGE_COMPARE = 'shresth_compare';

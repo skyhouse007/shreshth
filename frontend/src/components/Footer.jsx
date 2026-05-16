@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import SiteLogoMark from './SiteLogoMark.jsx';
+import { ADMIN_AUTH_DISABLED } from '../utils/constants.js';
 
 export default function Footer() {
   return (
@@ -40,7 +41,10 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link to="/admin/login" className="text-neutral-700 hover:text-gold dark:text-neutral-300">
+              <Link
+                to={ADMIN_AUTH_DISABLED ? '/admin/dashboard' : '/admin/login'}
+                className="text-neutral-700 hover:text-gold dark:text-neutral-300"
+              >
                 Admin
               </Link>
             </li>

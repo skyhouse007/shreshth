@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../context/AuthContext.jsx';
+import { ADMIN_AUTH_DISABLED } from '../utils/constants.js';
 import SiteLogoMark from './SiteLogoMark.jsx';
 import WhatsAppFloat from './WhatsAppFloat.jsx';
 import { api } from '../api/client.js';
@@ -105,17 +106,19 @@ export default function AdminLayout() {
               <HomeIcon className="h-4 w-4" />
               View site
             </button>
-            <button
-              type="button"
-              onClick={() => {
-                logout();
-                navigate('/admin/login');
-              }}
-              className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-950/40"
-            >
-              <LogOut className="h-4 w-4" />
-              Log out
-            </button>
+            {!ADMIN_AUTH_DISABLED ? (
+              <button
+                type="button"
+                onClick={() => {
+                  logout();
+                  navigate('/admin/login');
+                }}
+                className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-950/40"
+              >
+                <LogOut className="h-4 w-4" />
+                Log out
+              </button>
+            ) : null}
           </nav>
         </aside>
 
