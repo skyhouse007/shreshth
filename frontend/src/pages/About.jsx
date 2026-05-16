@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion';
 import SEO from '../components/SEO.jsx';
 
+const chairmenFounders = [{ name: 'Shalini Shreshth', role: 'Chairman & Founder', image: null }];
+
 const directors = [
   { name: 'Dr. Mrigendra Kumar', role: 'Director', image: '/team/kumar-santosh.png' },
-  { name: 'Kumar Santosh', role: 'Director', image: '/team/mrigendra-kumar.png' },
+  { name: 'Kumar Santosh', role: 'Director - Finance', image: '/team/mrigendra-kumar.png' },
   { name: 'Ranjan Kumar', role: 'Director-HR', image: '/team/ranjan-kumar.png' },
 ];
 
@@ -52,6 +54,48 @@ export default function About() {
             </p>
           </motion.div>
         </div>
+
+        <section className="mt-20">
+          <h2 className="heading-dlf font-display text-3xl font-semibold text-neutral-900 dark:text-white">
+            Chairman &amp; Founder
+          </h2>
+          <p className="mt-2 max-w-2xl text-neutral-600 dark:text-neutral-400">
+            Founding leadership shaping Shresth Properties&apos; direction and standards.
+          </p>
+          <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {chairmenFounders.map((member, i) => (
+              <motion.article
+                key={member.name}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="flex flex-col items-center overflow-hidden rounded-2xl border border-neutral-200 bg-white px-5 pb-5 pt-6 text-center dark:border-neutral-800 dark:bg-neutral-900 sm:px-8 sm:pb-6 sm:pt-8"
+              >
+                <div className="mx-auto flex aspect-[3/4] w-full max-w-[11rem] items-center justify-center overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-800 sm:max-w-[12rem]">
+                  {member.image ? (
+                    <img src={member.image} alt={member.name} className="h-full w-full object-cover object-top" />
+                  ) : (
+                    <span className="heading-dlf select-none text-3xl font-semibold tracking-tight text-neutral-400 dark:text-neutral-500 sm:text-4xl">
+                      {member.name
+                        .split(/\s+/)
+                        .map((part) => part[0])
+                        .join('')
+                        .slice(0, 3)
+                        .toUpperCase()}
+                    </span>
+                  )}
+                </div>
+                <div className="mt-4 w-full border-t border-neutral-200 pt-4 dark:border-neutral-800">
+                  <h3 className="heading-dlf font-display text-lg font-semibold text-neutral-900 dark:text-white sm:text-xl">
+                    {member.name}
+                  </h3>
+                  <p className="mt-1 text-sm font-medium text-gold">{member.role}</p>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </section>
 
         <section className="mt-20">
           <h2 className="heading-dlf font-display text-3xl font-semibold text-neutral-900 dark:text-white">Directors</h2>

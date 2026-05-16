@@ -61,12 +61,12 @@ export default function Contact() {
                 <br />
                 Bihar 824231 · India
                 <br />
-                <a className="text-gold hover:underline" href="tel:+916312203400">
-                  +91 63122 03400
+                <a className="text-gold hover:underline" href="tel:+919523048164">
+                  +91 95230 48164
                 </a>
                 <br />
-                <a className="text-gold hover:underline" href="mailto:hello@shresthproperties.com">
-                  hello@shresthproperties.com
+                <a className="text-gold hover:underline" href="mailto:support@shreshthinfratech.com">
+                  support@shreshthinfratech.com
                 </a>
               </address>
             </div>

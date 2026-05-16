@@ -59,14 +59,14 @@ export default function Footer() {
             </li>
             <li className="flex gap-2">
               <Phone className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-              <a href="tel:+916312203400" className="hover:text-gold">
-                +91 63122 03400
+              <a href="tel:+919523048164" className="hover:text-gold">
+                +91 95230 48164
               </a>
             </li>
             <li className="flex gap-2">
               <Mail className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-              <a href="mailto:hello@shresthproperties.com" className="hover:text-gold">
-                hello@shresthproperties.com
+              <a href="mailto:support@shreshthinfratech.com" className="hover:text-gold">
+                support@shreshthinfratech.com
               </a>
             </li>
           </ul>
