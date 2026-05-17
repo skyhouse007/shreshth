@@ -48,7 +48,7 @@ export default function Contact() {
               title="Office map"
               className="h-96 w-full border-0"
               loading="lazy"
-              src="https://maps.google.com/maps?q=Bodh%20Gaya%20Bihar&z=14&output=embed"
+              src="https://maps.google.com/maps?q=Kadugodi+Tree+Park+Whitefield+Bengaluru&z=14&output=embed"
             />
           </div>
           <div>
@@ -57,9 +57,9 @@ export default function Contact() {
               <address className="mt-4 not-italic text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
                 Shresth Properties LLP
                 <br />
-                Experience center · Bodh Gaya
+                Corporate office · Kadugodi Tree Park
                 <br />
-                Bihar 824231 · India
+                Whitefield, Bengaluru · Karnataka · India
                 <br />
                 <a className="text-gold hover:underline" href="tel:+919523048164">
                   +91 95230 48164

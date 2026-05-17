@@ -41,7 +41,10 @@ export default function StaticProjectCard({ project, index = 0 }) {
             >
               {project.statusLabel}
             </span>
-            <h3 className="mt-3 heading-dlf font-display text-2xl font-semibold text-white drop-shadow-md">
+            <h3
+              data-theme-preserve
+              className="mt-3 heading-dlf font-display text-2xl font-semibold text-white drop-shadow-md"
+            >
               {title}
             </h3>
           </div>

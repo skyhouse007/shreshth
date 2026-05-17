@@ -52,10 +52,17 @@ export default function Footer() {
         </div>
         <div>
           <h3 className="mb-4 text-sm font-semibold heading-dlf text-gold">Visit</h3>
+          <p className="mb-3 text-sm font-medium text-neutral-800 dark:text-neutral-200">
+            Shreshth infratech and enterprises LLP
+          </p>
           <ul className="space-y-3 text-sm text-neutral-700 dark:text-neutral-300">
             <li className="flex gap-2">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-              <span>Experience center · Bodh Gaya 824231, Bihar</span>
+              <span>
+                Corporate office · Kadugodi Tree Park, Whitefield
+                <br />
+                Bengaluru · Karnataka · India
+              </span>
             </li>
             <li className="flex gap-2">
               <Phone className="mt-0.5 h-4 w-4 shrink-0 text-gold" />

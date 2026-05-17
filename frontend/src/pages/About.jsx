@@ -14,16 +14,19 @@ export default function About() {
     <>
       <SEO
         title="About"
-        description="Shresth Properties — boutique real estate advisory with a flagship upcoming residential project in Bodh Gaya, Bihar."
+        description="Shresth Properties — Bengaluru-based boutique real estate advisory with a flagship upcoming residential project in Bodh Gaya, Bihar."
       />
       <div className="mx-auto max-w-6xl px-4 py-14 md:px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
           <p className="text-xs font-semibold heading-dlf text-gold">Our story</p>
-          <h1 className="mt-3 heading-dlf font-display text-4xl font-semibold leading-tight text-neutral-900 dark:text-white md:text-5xl">Grounded in Bodh Gaya, built for the long horizon</h1>
+          <h1 className="mt-3 heading-dlf font-display text-4xl font-semibold leading-tight text-neutral-900 dark:text-white md:text-5xl">
+            Based in Bengaluru — grounded in Bodh Gaya, built for the long horizon
+          </h1>
           <p className="mt-6 text-lg leading-relaxed text-neutral-600 dark:text-neutral-300">
-            Shresth Properties began as a boutique desk advising founders on their first marquee purchases; today our
-            flagship focus is an upcoming collection of 2 and 3 BHK homes in Bodh Gaya, Bihar — stillness you can own — plus
-            a select wider portfolio, always with transparent economics and quiet execution.
+            Shresth Properties runs as a calm, founder-led desk out of Bengaluru: we advise on first marquee buys and
+            steward long-cycle projects with the patience of an owner. Our flagship is an upcoming collection of 2 and 3 BHK
+            homes in Bodh Gaya, Bihar — stillness you can own — alongside a select wider portfolio, always with transparent
+            economics and quiet execution.
           </p>
         </motion.div>
 
